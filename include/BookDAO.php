@@ -53,7 +53,7 @@ class BookDAO {
 
         $stmt->bindParam(':title', $book->title, PDO::PARAM_STR);
         $stmt->bindParam(':isbn13', $book->isbn13, PDO::PARAM_STR);
-        $stmt->bindParam(':price', $book->price, PDO::PARAM_INT);
+        $stmt->bindParam(':price', $book->price, PDO::PARAM_STR);
         
         $isAddOK = False;
         if ($stmt->execute()) {
@@ -73,7 +73,7 @@ class BookDAO {
         
         $stmt->bindParam(':title', $book->title, PDO::PARAM_STR);
         $stmt->bindParam(':isbn13', $book->isbn13, PDO::PARAM_STR);
-        $stmt->bindParam(':price', $book->price, PDO::PARAM_INT);
+        $stmt->bindParam(':price', $book->price, PDO::PARAM_STR);
         
         $stmt->execute();
         

@@ -21,7 +21,7 @@ if (isset($_POST['title'])) {
         
         <?php printErrors(); ?>
 
-        <form action='add.php' method='post'>
+        <form id='add-form' action='add.php' method='post'>
             <table>
                 <tr>
                     <td>

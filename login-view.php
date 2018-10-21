@@ -19,7 +19,7 @@ if (isset($_POST['username'])) {
     <h1>Login</h1>
     <?php printErrors(); ?>
     
-    <form method="post" action="login.php">
+    <form id='login-form' method="post" action="login.php">
         <table>
         <tr>
             <td>

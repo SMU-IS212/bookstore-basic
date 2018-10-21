@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
         <h1>Edit Book</h1> 
         <?php printErrors(); ?>
         
-        <form action='edit.php' method='post'>
+        <form id='edit-form' action='edit.php' method='post'>
         <table>
                 <tr>
                     <td>

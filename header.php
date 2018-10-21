@@ -10,7 +10,7 @@ echo "
     <table>
     <tr>
         <td>Welcome {$name} ! </td>
-        <td><a href='logout.php'>Logout</a></td>
+        <td><a id='logout' href='logout.php'>Logout</a></td>
     </tr>
     </table>
     <hr />

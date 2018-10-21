@@ -18,7 +18,7 @@ $result = $dao->retrieveAll();
         ?>
         
         <h1>Book Listing</h1>
-        <table border='1'>
+        <table id='book-list' border='1'>
             <tr>
                 <th>Title</th>
                 <th>ISBN 13</th>
