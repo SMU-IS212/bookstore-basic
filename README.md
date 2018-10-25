@@ -46,8 +46,10 @@ Revision 1 . Files affected : bootstrap.php, login.php, include/protect.php, inc
 - fix bootstrap unlink() on windows 
 - fix admin user protection
 
-Current - Revision 1.1
-
+Revision 1.1
 - add ids for views add-view.php, bootstrap-view.php, edit-view.php, header.php, list-view.php,
 login-view.php
 - change uasort() to usort() to avoid displaying index : include/Sort.php
+
+Current - Revision 1.2 . Files affected json/bootstrap.php ; include/UserDAO.php ; include/Sort.php
+- refactor and fix inconsistency in bootstrap

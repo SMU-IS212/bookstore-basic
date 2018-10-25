@@ -38,6 +38,48 @@ class UserDAO {
         }
         return $result;
     }
-  
 
+    public function create($user) {
+        $sql = "INSERT IGNORE INTO admin_user (username, gender, password, name) VALUES (:username, :gender, :password, :name)";
+
+        $connMgr = new ConnectionManager();      
+        $conn = $connMgr->getConnection();
+        $stmt = $conn->prepare($sql);
+        
+        $user->password = password_hash($user->password,PASSWORD_DEFAULT);
+
+        $stmt->bindParam(':username', $user->username, PDO::PARAM_STR);
+        $stmt->bindParam(':gender', $user->gender, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $user->password, PDO::PARAM_STR);
+        $stmt->bindParam(':name', $user->name, PDO::PARAM_STR);
+
+        $isAddOK = False;
+        if ($stmt->execute()) {
+            $isAddOK = True;
+        }
+
+        return $isAddOK;
+    }
+
+     public function update($user) {
+        $sql = 'UPDATE admin_user SET gender=:gender, password=:password, name=:name WHERE username=:username';      
+        
+        $connMgr = new ConnectionManager();           
+        $conn = $connMgr->getConnection();
+        $stmt = $conn->prepare($sql);
+        
+        $user->password = password_hash($user->password,PASSWORD_DEFAULT);
+
+        $stmt->bindParam(':username', $user->username, PDO::PARAM_STR);
+        $stmt->bindParam(':gender', $user->gender, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $user->password, PDO::PARAM_STR);
+        $stmt->bindParam(':name', $user->name, PDO::PARAM_STR);
+
+        $isUpdateOk = False;
+        if ($stmt->execute()) {
+            $isUpdateOk = True;
+        }
+
+        return $isUpdateOk;
+    }
 }
