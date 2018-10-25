@@ -35,14 +35,10 @@ function printErrors() {
 }
 
 
+# check if field is set
 function isMissingOrEmpty($name) {
-    if (!isset($_REQUEST[$name])) {
-        return "$name cannot be empty";
-    }
-
-    // client did send the value over
     $value = $_REQUEST[$name];
-    if (empty($value) && $value !== '0') {
+    if (!isset($value) || empty($value)) {
         return "$name cannot be empty";
     }
 }

@@ -7,7 +7,7 @@ class Sort {
 
 	function sort_it($list,$sorttype)
 	{
-		uasort($list,array($this,$sorttype));
+		usort($list,array($this,$sorttype));
 		return $list;
 	}
 }
