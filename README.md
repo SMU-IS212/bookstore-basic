@@ -51,5 +51,11 @@ Revision 1.1
 login-view.php
 - change uasort() to usort() to avoid displaying index : include/Sort.php
 
-Current - Revision 1.2 . Files affected json/bootstrap.php ; include/UserDAO.php ; include/Sort.php
+Revision 1.2 . Files affected json/bootstrap.php ; include/UserDAO.php ; include/Sort.php
 - refactor and fix inconsistency in bootstrap
+
+Current - Revision 1.3 . Files affected json/bootstrap.php ; json/authenticate.php ; include/protect.php; include/common.php
+-Fix several bugs in bootstrap.php
+-"message"->"messages" in authenticate.php
+-Protect Upload in protect.php
+-Fix a bug where "ISBN13 record not found" is displayed along "invalid ISBN13 value" Common.php

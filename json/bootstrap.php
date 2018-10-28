@@ -9,7 +9,7 @@ $zip_file = $_FILES["bootstrap-file"]["tmp_name"];
 $temp_dir = sys_get_temp_dir();
 
 # check file size
-if ($_FILES["bootstrap-file"]["size"] < 0)
+if ($_FILES["bootstrap-file"]["size"] <= 0)
 	$errors[] = "file is empty";
 else {
 	
@@ -26,7 +26,11 @@ else {
 	$book_path = "$temp_dir/book.csv";
 
 	# check if open success
-	if (($userlist = @fopen($user_path, "r")) && ($booklist = @fopen($book_path, "r")))
+	$m = 1;
+	$n = 1;
+	$userlist = @fopen($user_path, "r");
+	$booklist = @fopen($book_path, "r");
+	if (!empty($userlist) && !empty($booklist))
 	{
 		$connMgr = new ConnectionManager();
 		$conn = $connMgr->getConnection();
@@ -39,7 +43,7 @@ else {
 		$stmt = $conn->prepare("TRUNCATE TABLE book"); 
 		$stmt->execute();
 
-		$m = 1;
+		
 		# Skip header
 		$data = @fgetcsv($userlist);
  		
@@ -80,7 +84,7 @@ else {
 				$temp[] = "invalid password";
 			
 			# name less than 60 chars
-			if (strlen($user->name) > 60)
+			if (strlen($user->name) > 60 || empty($user->name))
 				$temp[] = "invalid name";
 
 
@@ -95,7 +99,7 @@ else {
 		}
 
 		
-		$n = 1;
+		
 		# skip header
 		$data = fgetcsv($booklist);
 
@@ -136,7 +140,7 @@ else {
 		
 	}
 	else 
-		$errors[] = "can't find user.csv and book.csv, make sure they're directly under the zip, not inside a folder";
+		$errors[] = "input files not found";
 }
 
 
@@ -147,7 +151,7 @@ if (!isEmpty($errors))
 	$errors = $sortclass->sort_it($errors,"bootstrap");
 	$result = [ 
 		"status" => "error",
-		"message" => $errors
+		"messages" => $errors
 	];
 }
 else

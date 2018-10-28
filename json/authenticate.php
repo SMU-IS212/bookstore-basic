@@ -13,7 +13,7 @@ $errors = array_filter($errors);
 if (!isEmpty($errors)) {
     $result = [
         "status" => "error",
-        "message" => $errors
+        "messages" => $errors
         ];
 }
 else{

@@ -15,7 +15,7 @@ $currentFolder = $pathSegments[$numSegment - 2]; # Current folder
 $page = $pathSegments[$numSegment -1]; # Current page
 
 # If page is bootstrap-view or bootstrap, check if token is from admin user
-if ($page == "bootstrap-view.php" || $page == "bootstrap.php")
+if ($page == "bootstrap-view.php" || $page == "bootstrap.php" || $page == "upload.php")
 {	
 	if (verify_token($token) != 2){
 			$_SESSION['errors'] =  ["not admin user"]; # Sorry sir
@@ -28,7 +28,7 @@ elseif ($currentFolder == "json" && !verify_token($token))
 {
 	$result = [
             "status"=>"error",
-            "message"=>"token is invalid"
+            "messages"=> "token is invalid"
         ];
     
  	header('Content-Type: application/json');
@@ -37,11 +37,8 @@ elseif ($currentFolder == "json" && !verify_token($token))
 }
 elseif (!verify_token($token)) {
 
-     $_SESSION['errors'] =  ["token is invalid"];
+     $_SESSION['errors'] =  "token is invalid";
      
      header("Location: login-view.php");
 }
-
-
-
 ?>

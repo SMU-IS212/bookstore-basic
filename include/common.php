@@ -16,6 +16,7 @@ spl_autoload_register(function($class) {
 session_start();
 ini_set('display_errors', 1);
 
+# get configuration parameters
 include "configuration.php";
 
 
@@ -34,7 +35,6 @@ function printErrors() {
     }    
 }
 
-
 # check if field is set
 function isMissingOrEmpty($name) {
     $value = $_REQUEST[$name];
@@ -43,39 +43,49 @@ function isMissingOrEmpty($name) {
     }
 }
 
+
+# check if an int input is an int and non-negative
 function isNonNegativeInt($var) {
     if (is_numeric($var) && $var >= 0 && $var == round($var))
         return TRUE;
 }
 
+# check if a float input is is numeric and non-negative
 function isNonNegativeFloat($var) {
     if (is_numeric($var) && $var >= 0)
         return TRUE;
 }
 
-
+# check error one by one using a checklist
 function checkError($book, $checklist) {
     $errors = array();
     foreach ($checklist as $item) {
         switch ($item) {
             case "title":
-                if (strlen($book->title) > 100 )
+                if (strlen($book->title) > 100 || empty($book->title))
                     $errors[] = "invalid title";
                 break;
-            case "isbn13record":  
-                $dao = new BookDAO();  
-                if (!$dao->retrieve($book->isbn13))
-                    $errors[] = "ISBN13 record not found";
-                break;
-            case "isbn13":
-                if (strlen($book->isbn13) != 13 || !isNonNegativeInt($book->isbn13))
+            case "isbn13":  # check isbn13 format
+                if (strlen($book->isbn13) != 13 || !isNonNegativeInt($book->isbn13)) {
+                    $index = array_search('ISBN13 record not found',$errors);
+                    if($index !== FALSE){
+                        unset($errors[$index]);
+                    }
                     $errors[] = "invalid ISBN13 value";
+                }
+                break;    
+            case "isbn13record":  # check if record exist
+                if (!in_array("invalid ISBN13 value",$errors)) {
+                    $dao = new BookDAO();  
+                    if (!$dao->retrieve($book->isbn13))
+                        $errors[] = "ISBN13 record not found";
+                }
                 break;
-            case "price":
+            case "price":   # check price format
                 if (!isNonNegativeFloat($book->price))
                     $errors[] = "invalid price";
                 break;
-            case "availability":
+            case "availability":    # check availability format
                 if (!isNonNegativeInt($book->availability))
                     $errors[] = "invalid availability";
         }
