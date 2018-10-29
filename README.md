@@ -6,7 +6,8 @@ Please update following files:
 Replace these files with current latest version
 - json/bootstrap.php 
 - include/userDAO.php
-I have got suggestion to replace sort($errors) with $errors=usort($errors,"strnatcasecmp") to ignore case-sensitive (ISBN13 before )
+
+I have got suggestion to replace sort($errors) with $errors=usort($errors,"strnatcasecmp") to ignore case-sensitive ("invalid ISBN13 value" comes before "invalid availability"). If I implement this, it will change many files, so I will hold off for now.
 Current - Revision 1.4
 
 
