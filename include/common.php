@@ -38,7 +38,7 @@ function printErrors() {
 # check if field is set
 function isMissingOrEmpty($name) {
     $value = $_REQUEST[$name];
-    if (!isset($value) || empty($value)) {
+    if (!isset($value) || (empty($value) && $value !== "0")) {
         return "$name cannot be empty";
     }
 }
@@ -94,14 +94,15 @@ function checkError($book, $checklist) {
 }
 
 
-
+# this is better than empty when use with array, empty($var) returns FALSE even when
+# $var has only empty cells
 function isEmpty($var) {
-    if (isset($var))
-    foreach ($var as $key => $value) {
-    if (empty($value)) {
-       unset($var[$key]);
-    }
-    }
+    if (isset($var) && is_array($var))
+        foreach ($var as $key => $value) {
+            if (empty($value)) {
+               unset($var[$key]);
+            }
+        }
 
     if (empty($var))
         return TRUE;
