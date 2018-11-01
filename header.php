@@ -1,8 +1,8 @@
 <?php
 $user = $_SESSION['user'];
-if ($user->gender == 'male')
+if (strtolower($user->gender) == 'male')
 $prefix = 'Mr';
-elseif ($user->gender == 'female')
+elseif (strtolower($user->gender) == 'female')
 $prefix = 'Ms';
 
 $name = $prefix.". ".$user->name;
