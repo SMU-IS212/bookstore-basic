@@ -65,11 +65,11 @@ else {
 
 					# username format first part only character or dot
 					if (preg_match( '/[^a-zA-Z0-9.]/', $parts[0])){
-						$temp[] = "invalid userid";
+						$temp[] = "invalid username";
 					}
 					# second part is year between 2018 and 2014
 					elseif (intval($parts[1])>2018 || intval($parts[1])<2014 || !isset($parts[1])){
-						$temp[] = "invalid userid";
+						$temp[] = "invalid username";
 					}
 
 					# ip duplicate
