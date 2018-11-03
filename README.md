@@ -1,6 +1,8 @@
 # bookstore-basic PHP
 CHANGELOG
-Please update following files:
+Current revision: Hi bootstrap has been modifed again for a rare bug. Please update yours. Upload is not affected by this bug. 
+
+Last revision: Please update following files:
 - include/common.php = >     "if (!isset($value) || empty($value)) {" to   "if (!isset($value) || (empty($value) && $value !== "0")) {"
 - inlcude/Sort.php = > "uasort()" to "usort()"
 Replace these files with current latest version
@@ -8,7 +10,7 @@ Replace these files with current latest version
 - include/userDAO.php
 
 I have got suggestion to replace sort($errors) with $errors=usort($errors,"strnatcasecmp") to ignore case-sensitive ("invalid ISBN13 value" comes before "invalid availability"). If I implement this, it will change many files, so I will hold off for now.
-Current - Revision 1.4
+Current - Revision 1.5
 
 
 The project structure as follow:
