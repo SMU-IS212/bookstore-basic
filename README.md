@@ -1,5 +1,6 @@
 # bookstore-basic PHP
 CHANGELOG
+
 Current revision: Hi bootstrap has been modifed again for a rare bug. Please update yours. Upload is not affected by this bug. 
 
 Last revision: Please update following files:
