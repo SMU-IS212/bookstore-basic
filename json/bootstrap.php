@@ -83,7 +83,7 @@ else {
 
 					# ip duplicate
 					if ($userDao->retrieve($user->username))
-						$temp[] = "duplicate userid";
+						$temp[] = "duplicate username";
 					
 					# gender either male of female
 					if (strtolower($user->gender) != "male" && strtolower($user->gender) != "female")
