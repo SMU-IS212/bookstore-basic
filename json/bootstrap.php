@@ -28,8 +28,17 @@ else {
 		$n = 1;
 		$m = 1;
 		# check if open success
-		if (empty($booklist) || empty($userlist))
+		if (empty($booklist) || empty($userlist)){
 			$errors[] = "input files not found";
+			if (!empty($booklist)){
+				fclose($booklist);
+				@unlink($book_path);
+			} 
+			if (!empty($userlist)) {
+				fclose($userlist);
+				@unlink($user_path);
+			}
+		}
 		else {
 			$connMgr = new ConnectionManager();
 			$conn = $connMgr->getConnection();
