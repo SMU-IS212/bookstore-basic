@@ -29,7 +29,7 @@ USE `bookstore`;
 --
 -- Table structure for table `admin_user`
 --
-
+DROP TABLE IF EXISTS `admin_user`;
 CREATE TABLE `admin_user` (
   `username` varchar(32) NOT NULL,
   `gender` varchar(45) DEFAULT NULL,
@@ -51,7 +51,7 @@ INSERT INTO `admin_user` (`username`, `gender`, `password`, `name`) VALUES
 --
 -- Table structure for table `book`
 --
-
+DROP TABLE IF EXISTS `book`;
 CREATE TABLE `book` (
   `title` varchar(256) NOT NULL,
   `isbn13` char(13) NOT NULL,
@@ -104,7 +104,7 @@ USE `bookstore2`;
 --
 -- Table structure for table `admin_user`
 --
-
+DROP TABLE IF EXISTS `admin_user`;
 CREATE TABLE `admin_user` (
   `username` varchar(32) NOT NULL,
   `gender` varchar(45) DEFAULT NULL,
@@ -126,7 +126,7 @@ INSERT INTO `admin_user` (`username`, `gender`, `password`, `name`) VALUES
 --
 -- Table structure for table `book`
 --
-
+DROP TABLE IF EXISTS `book`;
 CREATE TABLE `book` (
   `title` varchar(256) NOT NULL,
   `isbn13` char(13) NOT NULL,
@@ -179,7 +179,7 @@ USE `bookstore3`;
 --
 -- Table structure for table `admin_user`
 --
-
+DROP TABLE IF EXISTS `admin_user`;
 CREATE TABLE `admin_user` (
   `username` varchar(32) NOT NULL,
   `gender` varchar(45) DEFAULT NULL,
@@ -201,7 +201,7 @@ INSERT INTO `admin_user` (`username`, `gender`, `password`, `name`) VALUES
 --
 -- Table structure for table `book`
 --
-
+DROP TABLE IF EXISTS `book`;
 CREATE TABLE `book` (
   `title` varchar(256) NOT NULL,
   `isbn13` char(13) NOT NULL,
