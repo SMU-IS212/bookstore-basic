@@ -31,7 +31,7 @@ USE `bookstore`;
 --
 DROP TABLE IF EXISTS `admin_user`;
 CREATE TABLE `admin_user` (
-  `username` varchar(256) NOT NULL,
+  `username` varchar(128) NOT NULL,
   `gender` varchar(45) DEFAULT NULL,
   `password` varchar(256) NOT NULL,
   `name` varchar(256) NOT NULL
@@ -106,7 +106,7 @@ USE `bookstore2`;
 --
 DROP TABLE IF EXISTS `admin_user`;
 CREATE TABLE `admin_user` (
-  `username` varchar(256) NOT NULL,
+  `username` varchar(128) NOT NULL,
   `gender` varchar(45) DEFAULT NULL,
   `password` varchar(256) NOT NULL,
   `name` varchar(256) NOT NULL
@@ -181,7 +181,7 @@ USE `bookstore3`;
 --
 DROP TABLE IF EXISTS `admin_user`;
 CREATE TABLE `admin_user` (
-  `username` varchar(256) NOT NULL,
+  `username` varchar(128) NOT NULL,
   `gender` varchar(45) DEFAULT NULL,
   `password` varchar(256) NOT NULL,
   `name` varchar(256) NOT NULL
